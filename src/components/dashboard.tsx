@@ -27,12 +27,12 @@ const Dashboard = () => {
         {/* Welcome Header */}
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <h1 className="text-2xl font-bold dark:text-white">
+            <h1 className="text-xl font-bold dark:text-white">
               Welcome back, {userSettings.name}
             </h1>
             <ThemeToggle />
           </div>
-          <p className="text-muted-foreground dark:text-gray-400">
+          <p className="text-sm text-muted-foreground dark:text-gray-400">
             {new Date().toLocaleDateString('en-US', {
               weekday: 'long',
               year: 'numeric',
