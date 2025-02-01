@@ -154,7 +154,6 @@ const TransactionList = ({
                   <TransactionListItem
                     key={transaction.id}
                     transaction={transaction}
-                    currency={userSettings?.currency || 'USD'}
                     accounts={accounts}
                     categories={categories}
                   />

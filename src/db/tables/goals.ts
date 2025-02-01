@@ -1,5 +1,3 @@
-import { Goal } from '@/types/budget';
-
 export interface GoalsTable {
   id: string;
   name: string;

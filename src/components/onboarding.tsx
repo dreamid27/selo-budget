@@ -53,14 +53,6 @@ type OnboardingStep = {
   description: string;
 };
 
-interface Account {
-  id: string;
-  name: string;
-  type: 'checking' | 'savings' | 'credit' | 'cash';
-  balance: number;
-  currency: string;
-}
-
 interface Category {
   id: string;
   name: string;

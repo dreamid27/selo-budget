@@ -1,4 +1,4 @@
-import { db, initializeDefaultData } from '../db/db';
+import { initializeDefaultData } from '../db/db';
 
 export async function initializeDatabase() {
   try {

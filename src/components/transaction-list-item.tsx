@@ -1,11 +1,6 @@
 import { Transaction } from '@/db/interfaces';
 import { format } from 'date-fns';
-import {
-  ArrowDownCircle,
-  ArrowDownIcon,
-  ArrowUpCircle,
-  ArrowUpIcon,
-} from 'lucide-react';
+import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react';
 import { Account } from '@/types/account';
 import { cn } from '@/lib/utils';
 import { formatCurrency } from '@/lib/format';
@@ -13,14 +8,12 @@ import { motion } from 'framer-motion';
 
 interface TransactionListItemProps {
   transaction: Transaction;
-  currency: string;
   accounts: Account[];
   categories: any[];
 }
 
 const TransactionListItem = ({
   transaction,
-  currency,
   accounts,
   categories,
 }: TransactionListItemProps) => {
