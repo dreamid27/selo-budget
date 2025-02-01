@@ -47,14 +47,14 @@ const TransactionDialog = ({
     <>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button className="flex items-center gap-2 h-9">
+          <Button>
             <PlusIcon className="h-4 w-4" />
             Add Transaction
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[480px] p-4 sm:p-6">
-          <DialogHeader className="space-y-2 mb-4">
-            <DialogTitle className="text-xl">Add New Transaction</DialogTitle>
+        <DialogContent className="sm:max-w-[480px] sm:max-h-[90dvh] p-4 fixed bottom-0 right-0 w-[100vw] h-[100dvh] overflow-auto overscroll-y-none pointer-events-auto">
+          <DialogHeader>
+            <DialogTitle>Add New Transaction</DialogTitle>
             <DialogDescription>
               Record a new expense or income
             </DialogDescription>
@@ -125,7 +125,7 @@ const TransactionList = ({
   return (
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold">Recent Transactions</h2>
+        <h2 className="text-lg font-semibold">Recent Transactions</h2>
         <TransactionDialog
           onSubmit={handleAddTransaction}
           categories={categories}
