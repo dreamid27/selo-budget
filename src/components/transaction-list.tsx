@@ -14,9 +14,8 @@ import { ArrowRightIcon, PlusIcon, ReceiptIcon } from 'lucide-react';
 import TransactionForm from './transaction-form';
 import TransactionListItem from './transaction-list-item';
 import { Account } from '@/types/account';
-import { addTransaction, db, updateAccount } from '@/db/db';
+import { addTransaction, updateAccount } from '@/db/db';
 import { toast } from 'sonner';
-import { useLiveQuery } from 'dexie-react-hooks';
 
 const QuickTransactionButton = ({
   onOpenChange,
@@ -82,9 +81,6 @@ const TransactionList = ({
   categories: any[];
   transactions: Transaction[];
 }) => {
-  const userSettings = useLiveQuery(() =>
-    db.settings.toArray().then((settings) => settings[0])
-  );
   const handleAddTransaction = async (data: Omit<Transaction, 'id'>) => {
     try {
       if (!data.accountId) {
