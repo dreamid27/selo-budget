@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import Onboarding from './components/onboarding';
 import Dashboard from './components/dashboard';
+import TransactionsPage from './components/transactions-page';
 import { useEffect, useState } from 'react';
 import { isOnboardingComplete } from './db/db';
 import { ThemeProvider } from './components/theme-provider';
@@ -87,6 +88,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/transactions"
+            element={
+              <ProtectedRoute>
+                <TransactionsPage />
               </ProtectedRoute>
             }
           />

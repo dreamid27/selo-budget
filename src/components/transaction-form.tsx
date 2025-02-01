@@ -2,12 +2,7 @@ import { useState } from 'react';
 import { Transaction } from '../types/transaction';
 import { Account } from '@/types/account';
 import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
-import {
-  ArrowDownCircle,
-  ArrowUpCircle,
-  WalletIcon,
-  CalendarIcon,
-} from 'lucide-react';
+import { ArrowDownCircle, ArrowUpCircle, WalletIcon } from 'lucide-react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import CategorySelector from './category-selector';
@@ -18,8 +13,6 @@ import {
   TransactionFormValues,
 } from '@/schemas/transaction';
 import { Calendar } from './ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
-import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import {
   Form,

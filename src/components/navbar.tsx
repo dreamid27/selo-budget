@@ -73,7 +73,7 @@ const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  'block px-3 py-2 rounded-md text-base font-medium flex items-center',
+                  'px-3 py-2 rounded-md text-base font-medium flex items-center',
                   location.pathname === item.path
                     ? 'text-blue-600 dark:text-blue-400'
                     : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
