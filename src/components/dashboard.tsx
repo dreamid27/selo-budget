@@ -1,11 +1,10 @@
-import { ThemeToggle } from './theme-toggle';
-
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../db/db';
 import AccountCard from './account-card';
 import TransactionList from './transaction-list';
 import TrendCard from './trend-card';
 import SpendingByCategory from './spending-by-category';
+import Navbar from './navbar';
 
 const Dashboard = () => {
   // Use Dexie's useLiveQuery hook to get real-time updates
@@ -22,49 +21,49 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Welcome Header */}
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <Navbar />
+      <main className="p-6">
+        <div className="max-w-7xl mx-auto space-y-6">
+          {/* Welcome Header */}
+          <div className="flex justify-between items-center">
             <h1 className="text-xl font-bold dark:text-white">
               Welcome back, {userSettings.name}
             </h1>
-            <ThemeToggle />
+            <p className="text-sm text-muted-foreground dark:text-gray-400">
+              {new Date().toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </p>
           </div>
-          <p className="text-sm text-muted-foreground dark:text-gray-400">
-            {new Date().toLocaleDateString('en-US', {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </p>
-        </div>
 
-        {/* Account Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {accounts.length > 0 && (
-            <AccountCard
-              mainAccount={accounts[0]}
-              otherAccounts={accounts.slice(1)}
+          {/* Account Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {accounts.length > 0 && (
+              <AccountCard
+                mainAccount={accounts[0]}
+                otherAccounts={accounts.slice(1)}
+              />
+            )}
+            <SpendingByCategory transactions={transactions} />
+          </div>
+
+          {/* Trends Section */}
+          <TrendCard transactions={transactions} />
+
+          {/* Accounts Overview */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <TransactionList
+              accounts={accounts}
+              categories={categories}
+              transactions={transactions}
             />
-          )}
-          <SpendingByCategory transactions={transactions} />
+          </div>
         </div>
-
-        {/* Trends Section */}
-        <TrendCard transactions={transactions} />
-
-        {/* Accounts Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <TransactionList
-            accounts={accounts}
-            categories={categories}
-            transactions={transactions}
-          />
-        </div>
-      </div>
+      </main>
     </div>
   );
 };
