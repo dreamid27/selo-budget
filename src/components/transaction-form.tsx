@@ -203,37 +203,29 @@ const TransactionForm = ({
           render={({ field }) => (
             <FormItem className="space-y-2">
               <FormLabel>Date</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        'w-full pl-3 text-left font-normal',
-                        !field.value && 'text-muted-foreground'
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, 'PPP')
-                      ) : (
-                        <span>Pick a date</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
+              <FormControl>
+                <div className="border rounded-md p-3">
                   <Calendar
                     mode="single"
                     selected={field.value}
-                    onSelect={field.onChange}
+                    onSelect={(date: Date | undefined) => {
+                      if (date) {
+                        field.onChange(date);
+                        form.setValue('date', date);
+                      }
+                    }}
                     disabled={(date) =>
                       date > new Date() || date < new Date('1900-01-01')
                     }
+                    className="w-full"
                     initialFocus
                   />
-                </PopoverContent>
-              </Popover>
+                </div>
+              </FormControl>
+              <div className="text-sm text-muted-foreground">
+                Selected:{' '}
+                {field.value ? format(field.value, 'PPP') : 'No date selected'}
+              </div>
               <FormMessage />
             </FormItem>
           )}
