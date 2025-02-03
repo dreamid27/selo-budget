@@ -11,6 +11,8 @@ import TransactionsPage from './components/transactions-page';
 import { useEffect, useState } from 'react';
 import { isOnboardingComplete } from './db/db';
 import { ThemeProvider } from './components/theme-provider';
+import SettingsPage from './components/settings-page';
+import { Toaster } from 'sonner';
 
 // Update ProtectedRoute to use the database check
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -100,6 +102,14 @@ const App = () => {
             }
           />
           <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <SettingsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="*"
             element={
               hasCompletedOnboarding ? (
@@ -111,6 +121,7 @@ const App = () => {
           />
         </Routes>
       </Router>
+      <Toaster richColors closeButton position="top-right" />
     </ThemeProvider>
   );
 };
