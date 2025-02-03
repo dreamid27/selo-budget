@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '@/db/db';
-import { Settings } from '@/types/settings';
+
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
