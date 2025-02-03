@@ -5,6 +5,7 @@ import TransactionList from './transaction-list';
 import TrendCard from './trend-card';
 import SpendingByCategory from './spending-by-category';
 import Navbar from './navbar';
+import BudgetOverviewCard from './budget-overview-card';
 
 const Dashboard = () => {
   // Use Dexie's useLiveQuery hook to get real-time updates
@@ -23,7 +24,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Navbar />
-      <main className="p-6">
+      <main className="p-3">
         <div className="max-w-7xl mx-auto space-y-6">
           {/* Welcome Header */}
           <div className="flex justify-between items-center">
@@ -50,6 +51,9 @@ const Dashboard = () => {
             )}
             <SpendingByCategory transactions={transactions} />
           </div>
+
+          {/* Budget Overview */}
+          <BudgetOverviewCard />
 
           {/* Trends Section */}
           <TrendCard transactions={transactions} />

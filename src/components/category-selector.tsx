@@ -79,7 +79,7 @@ const CategorySelector = ({
         )}
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-[480px] p-0">
+        <DialogContent className="sm:max-w-[480px] sm:max-h-[90dvh] p-4 fixed bottom-0 right-0 w-[100vw] h-[100dvh] overflow-auto overscroll-y-none pointer-events-auto">
           <div className="p-4 pb-0">
             <div className="flex items-center gap-2 border rounded-lg px-3 mb-2">
               <Search className="h-4 w-4 text-muted-foreground" />
@@ -90,69 +90,69 @@ const CategorySelector = ({
                 onChange={(e) => setSearch(e.target.value.toLowerCase())}
               />
             </div>
-          </div>
-          <ScrollArea className="h-[300px] p-4 pt-0">
-            {Object.entries(groupedCategories).map(([group, items]) => {
-              const filteredItems = items.filter(
-                (item) =>
-                  item.name.toLowerCase().includes(search) ||
-                  group.toLowerCase().includes(search)
-              );
+            <ScrollArea className="h-[300px]">
+              {Object.entries(groupedCategories).map(([group, items]) => {
+                const filteredItems = items.filter(
+                  (item) =>
+                    item.name.toLowerCase().includes(search) ||
+                    group.toLowerCase().includes(search)
+                );
 
-              if (filteredItems.length === 0) return null;
+                if (filteredItems.length === 0) return null;
 
-              return (
-                <div key={group} className="mb-4">
-                  <div className="text-sm font-medium text-muted-foreground mb-2">
-                    {group}
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    {filteredItems.map((category) => (
-                      <Button
-                        key={category.id}
-                        variant="outline"
-                        className={cn(
-                          'flex items-center gap-2 h-auto p-3 justify-start',
-                          selectedCategory === category.id &&
-                            'border-primary bg-primary/5'
-                        )}
-                        onClick={() => {
-                          onSelect(category.id);
-                          setOpen(false);
-                        }}
-                      >
-                        <div
+                return (
+                  <div key={group} className="mb-4">
+                    <div className="text-sm font-medium text-muted-foreground mb-2">
+                      {group}
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      {filteredItems.map((category) => (
+                        <Button
+                          key={category.id}
+                          variant="outline"
                           className={cn(
-                            'flex h-8 w-8 shrink-0 items-center justify-center rounded-lg',
-                            type === 'expense'
-                              ? 'bg-red-100 text-red-600'
-                              : 'bg-green-100 text-green-600'
+                            'flex items-center gap-2 h-auto p-3 justify-start',
+                            selectedCategory === category.id &&
+                              'border-primary bg-primary/5'
                           )}
+                          onClick={() => {
+                            onSelect(category.id);
+                            setOpen(false);
+                          }}
                         >
-                          {category.icon}
-                        </div>
-                        <span className="text-sm font-medium truncate">
-                          {category.name}
-                        </span>
-                        {selectedCategory === category.id && (
-                          <Check className="h-4 w-4 text-primary ml-auto" />
-                        )}
-                      </Button>
-                    ))}
+                          <div
+                            className={cn(
+                              'flex h-8 w-8 shrink-0 items-center justify-center rounded-lg',
+                              type === 'expense'
+                                ? 'bg-red-100 text-red-600'
+                                : 'bg-green-100 text-green-600'
+                            )}
+                          >
+                            {category.icon}
+                          </div>
+                          <span className="text-sm font-medium truncate">
+                            {category.name}
+                          </span>
+                          {selectedCategory === category.id && (
+                            <Check className="h-4 w-4 text-primary ml-auto" />
+                          )}
+                        </Button>
+                      ))}
+                    </div>
                   </div>
+                );
+              })}
+              {!Object.values(groupedCategories).some((group) =>
+                group.some((item) =>
+                  item.name.toLowerCase().includes(search.toLowerCase())
+                )
+              ) && (
+                <div className="text-center py-6 text-muted-foreground">
+                  No categories found
                 </div>
-              );
-            })}
-            {!Object.values(groupedCategories).some((group) =>
-              group.some((item) =>
-                item.name.toLowerCase().includes(search.toLowerCase())
-              )
-            ) && (
-              <div className="text-center py-6 text-muted-foreground">
-                No categories found
-              </div>
-            )}
-          </ScrollArea>
+              )}
+            </ScrollArea>
+          </div>
         </DialogContent>
       </Dialog>
     </div>

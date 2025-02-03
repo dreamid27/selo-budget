@@ -8,6 +8,7 @@ import { accountsTable } from './tables/accounts';
 import { categoriesTable } from './tables/categories';
 import { settingsTable } from './tables/settings';
 import { transactionsTable } from './tables/transactions';
+import { BudgetLimit } from './interfaces';
 
 export class BudgetDB extends Dexie {
   accounts!: Table<Account>;
@@ -16,6 +17,7 @@ export class BudgetDB extends Dexie {
   settings!: Table<Settings>;
   budgets!: Table<Budget>;
   goals!: Table<Goal>;
+  budgetLimits!: Table<BudgetLimit>;
 
   constructor() {
     super('budget-db');
@@ -27,6 +29,7 @@ export class BudgetDB extends Dexie {
       settings: '++id, name, currency, theme',
       budgets: '++id, name, amount, categoryId, period',
       goals: '++id, name, targetAmount, currentAmount, category, priority',
+      budgetLimits: '++id, categoryId, period',
     });
   }
 }

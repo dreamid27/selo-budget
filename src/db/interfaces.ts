@@ -18,6 +18,8 @@ export interface UserSettings {
   name: string;
   currency: string;
   theme: 'light' | 'dark';
+  budgetAlerts: boolean;
+  overBudgetThreshold: number;
 }
 
 export interface Transaction {
@@ -30,4 +32,20 @@ export interface Transaction {
   date: Date;
   accountId: number;
   note?: string;
+}
+
+export interface BudgetLimit {
+  id?: number;
+  categoryId: number;
+  amount: number;
+  period: 'monthly' | 'yearly';
+  startDate: Date;
+}
+
+export interface BudgetProgress {
+  categoryId: number;
+  spent: number;
+  limit: number;
+  percentage: number;
+  period: 'monthly' | 'yearly';
 }
