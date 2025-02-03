@@ -4,7 +4,6 @@ import {
   ArrowDownIcon,
   ArrowUpIcon,
   MoreHorizontal,
-  Receipt,
   Tag,
   Wallet,
 } from 'lucide-react';
@@ -18,7 +17,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
-import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 interface TransactionListItemProps {
   transaction: Transaction;
