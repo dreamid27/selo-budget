@@ -57,6 +57,8 @@ export const initializeDefaultData = async () => {
     name: 'User',
     currency: 'USD',
     theme: 'light',
+    budgetAlerts: true,
+    overBudgetThreshold: 0.8,
   });
 
   // Add default categories

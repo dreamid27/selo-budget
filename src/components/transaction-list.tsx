@@ -52,19 +52,21 @@ const TransactionDialog = ({
             Add Transaction
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[480px] sm:max-h-[90dvh] p-4 fixed bottom-0 right-0 w-[100vw] h-[100dvh] overflow-auto overscroll-y-none pointer-events-auto">
+        <DialogContent className="sm:max-w-[480px] sm:max-h-[90dvh] p-4 fixed bottom-0 right-0 w-[100vw] h-full overflow-auto overscroll-y-none pointer-events-auto">
           <DialogHeader>
             <DialogTitle>Add New Transaction</DialogTitle>
             <DialogDescription>
               Record a new expense or income
             </DialogDescription>
           </DialogHeader>
-          <TransactionForm
-            onSubmit={onSubmit}
-            categories={categories}
-            accounts={accounts}
-            onOpenChange={setOpen}
-          />
+          <div>
+            <TransactionForm
+              onSubmit={onSubmit}
+              categories={categories}
+              accounts={accounts}
+              onOpenChange={setOpen}
+            />
+          </div>
         </DialogContent>
       </Dialog>
       <QuickTransactionButton onOpenChange={setOpen} />

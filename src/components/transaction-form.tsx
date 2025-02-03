@@ -118,14 +118,11 @@ const TransactionForm = ({
             <FormItem className="space-y-2">
               <FormLabel>Amount</FormLabel>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-lg font-medium text-muted-foreground">
-                  $
-                </span>
                 <FormControl>
                   <Input
                     type="number"
                     placeholder="0.00"
-                    className="pl-8 h-12 text-2xl font-medium"
+                    className="h-12 text-2xl font-medium"
                     {...field}
                   />
                 </FormControl>
@@ -179,7 +176,7 @@ const TransactionForm = ({
                         {account.name}
                       </span>
                       <span className="text-xs text-muted-foreground">
-                        ${account.balance.toFixed(2)}
+                        {account.balance.toFixed(2)}
                       </span>
                     </div>
                   </Button>

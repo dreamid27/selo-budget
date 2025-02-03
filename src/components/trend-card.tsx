@@ -88,7 +88,6 @@ const TrendCard = ({ transactions }: TrendCardProps) => {
           </div>
         </div>
         <p className="text-3xl font-bold mb-2">
-          $
           {trends.currentIncome.toLocaleString('en-US', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
@@ -119,7 +118,6 @@ const TrendCard = ({ transactions }: TrendCardProps) => {
           </div>
         </div>
         <p className="text-3xl font-bold mb-2">
-          $
           {trends.currentExpenses.toLocaleString('en-US', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,

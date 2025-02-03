@@ -1,13 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import { Home, LineChart, Settings, CreditCard, Menu } from 'lucide-react';
+import { Home, Settings, CreditCard, Menu } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { useState } from 'react';
 
 const navItems = [
   { name: 'Dashboard', path: '/', icon: Home },
   { name: 'Transactions', path: '/transactions', icon: CreditCard },
-  { name: 'Analytics', path: '/analytics', icon: LineChart },
   { name: 'Settings', path: '/settings', icon: Settings },
 ];
 

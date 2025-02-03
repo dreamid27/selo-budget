@@ -59,14 +59,6 @@ const TransactionListItem = ({
           <span className="font-medium text-sm sm:text-base text-foreground truncate">
             {transaction.description || category?.name || 'Uncategorized'}
           </span>
-          {transaction.note && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Receipt className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground flex-shrink-0" />
-              </TooltipTrigger>
-              <TooltipContent>{transaction.note}</TooltipContent>
-            </Tooltip>
-          )}
         </div>
         <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground">
           <div className="flex items-center gap-1 min-w-0">

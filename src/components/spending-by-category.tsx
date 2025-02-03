@@ -151,7 +151,6 @@ const SpendingByCategory = ({ transactions }: SpendingByCategoryProps) => {
             Total Spending
           </p>
           <p className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-            $
             {categorySpending.totalSpending.toLocaleString(undefined, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
@@ -184,7 +183,7 @@ const SpendingByCategory = ({ transactions }: SpendingByCategoryProps) => {
               </Pie>
               <Tooltip
                 formatter={(value: number) =>
-                  `$${value.toLocaleString(undefined, {
+                  `${value.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
                   })}`
@@ -225,7 +224,6 @@ const SpendingByCategory = ({ transactions }: SpendingByCategoryProps) => {
                 </div>
                 <div className="text-right">
                   <p className="font-semibold text-base">
-                    $
                     {category.total.toLocaleString(undefined, {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,

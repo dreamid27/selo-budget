@@ -1,15 +1,11 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../db/db';
-import {
-  BudgetLimit,
-  BudgetProgress,
-  Category,
-  Transaction,
-} from '../db/interfaces';
+import { BudgetLimit, BudgetProgress, Category } from '../db/interfaces';
 import { Button } from './ui/button';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -71,24 +67,31 @@ const BudgetOverviewCard = () => {
       <div className="p-6 space-y-4">
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-semibold">Budget Overview</h3>
-          <Dialog open={isSettingsOpen} onOpenChange={setIsSettingsOpen}>
-            <DialogTrigger asChild>
-              <Button variant="outline" size="sm">
-                <Plus className="h-4 w-4 mr-2" />
-                Set Budget
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Budget Settings</DialogTitle>
-              </DialogHeader>
-              <BudgetSettingsForm
-                categories={categories as Category[]}
-                budgetLimits={budgetLimits}
-                onClose={handleCloseSettings}
-              />
-            </DialogContent>
-          </Dialog>
+          <div>
+            <Dialog open={isSettingsOpen} onOpenChange={setIsSettingsOpen}>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="sm">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Set Budget
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[480px] sm:max-h-[90dvh] p-4 fixed bottom-0 right-0 w-[100vw] h-full  overflow-auto overscroll-y-none pointer-events-auto">
+                <DialogHeader>
+                  <DialogTitle>Budget Settings</DialogTitle>
+                  <DialogDescription>
+                    Record a new expense or income
+                  </DialogDescription>
+                </DialogHeader>
+                <div>
+                  <BudgetSettingsForm
+                    categories={categories as Category[]}
+                    budgetLimits={budgetLimits}
+                    onClose={handleCloseSettings}
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
 
         {budgetLimits.length === 0 ? (

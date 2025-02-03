@@ -336,6 +336,7 @@ const Onboarding = () => {
                   <SelectItem value="USD">USD ($)</SelectItem>
                   <SelectItem value="EUR">EUR (€)</SelectItem>
                   <SelectItem value="GBP">GBP (£)</SelectItem>
+                  <SelectItem value="IDR">IDR (Rp)</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
